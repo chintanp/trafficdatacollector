@@ -10,7 +10,10 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
     fluidPage(
-      h1("trafficdatacollector")
+      h1("trafficdatacollector"), 
+      mod_name_of_module1_ui("name_of_module1_ui_1"), 
+      mod_name_of_module2_ui("name_of_module2_ui_1"), 
+      actionButton("alert", "browser")
     )
   )
 }
