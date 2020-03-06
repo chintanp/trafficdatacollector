@@ -4,10 +4,10 @@
 \alias{run_app}
 \title{Run the Shiny Application}
 \usage{
-run_app(...)
+run_app(a = 12, b = 13)
 }
 \arguments{
-\item{...}{A series of options to be used inside the app.}
+\item{a, b}{test params used in run_app}
 }
 \description{
 Run the Shiny Application

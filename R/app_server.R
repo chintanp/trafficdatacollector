@@ -12,4 +12,8 @@ app_server <- function( input, output, session ) {
   observeEvent(input$alert,{
     golem::invoke_js("alert", "Yaya!")
   })
+  
+  print(
+    golem::get_golem_options("a")
+  )
 }

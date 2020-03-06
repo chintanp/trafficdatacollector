@@ -21,13 +21,7 @@ knitr::opts_chunk$set(
 
 The goal of trafficdatacollector is to aid the field officers in traffic data collection.
 
-## Installation
 
-You can install the released version of trafficdatacollector from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("trafficdatacollector")
-```
 
 ## Example
 
