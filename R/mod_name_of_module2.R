@@ -1,6 +1,6 @@
-#' name_of_module2 UI Function
+#' form Module
 #'
-#' @description A shiny Module.
+#' @description This module generates the form for collecting user input.
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'

@@ -17,11 +17,14 @@
 ## Add one line by package you want to add as dependency
 usethis::use_package( "thinkr" )
 usethis::use_package( "ipify" )
-
+usethis::use_package( "bs4Dash" )
+usethis::use_package( "shape" )
+# usethis::use_package("r2d3")
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module( name = "name_of_module1" ) # Name of the module
-golem::add_module( name = "name_of_module2" ) # Name of the module
+golem::add_module( name = "formModule" ) # Name of the module
+golem::add_module( name = "tableModule" ) # Name of the module
+golem::add_module( name = "tapInputModule" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*

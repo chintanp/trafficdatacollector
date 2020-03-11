@@ -9,8 +9,8 @@ run_app <- function(
   a = 12, 
   b = 13
 ) {
-  options(shiny.port = 8100)
-  options(shiny.host = ipify::get_ip())
+  # options(shiny.port = 8100)
+  # options(shiny.host = ipify::get_ip())
   with_golem_options(
     app = shinyApp(
       ui = app_ui, 
