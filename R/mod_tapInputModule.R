@@ -24,16 +24,17 @@ mod_tapInputModule_ui <- function(id){
         elevation = 4,
         width = NULL,
         solidHeader = TRUE, 
-        HTML('<div style="position:relative; height: 600px"> 
-                  <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
-          style="position:absolute; top:10px; left: 20px; opacity:0.4;filter:alpha(opacity=40);"/> 
-                  <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
-          style="position:absolute; top:350px; left: 20px; opacity:0.4;filter:alpha(opacity=40); "/> 
-                  <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
-          style="position:absolute; top:10px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/> 
-                  <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
-          style="position:absolute; top:350px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/> 
-             </div>')
+        # HTML('<div style="position:relative; height: 600px"> 
+        #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
+        #   style="position:absolute; top:10px; left: 20px; opacity:0.4;filter:alpha(opacity=40);"/> 
+        #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
+        #   style="position:absolute; top:350px; left: 20px; opacity:0.4;filter:alpha(opacity=40); "/> 
+        #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
+        #   style="position:absolute; top:10px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/> 
+        #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"    
+        #   style="position:absolute; top:350px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/> 
+        #      </div>')
+        tags$img(src = "www/grass.png")
         #imageOutput("rect1", width = "100%", height = "400px")
       )
     )))
@@ -43,7 +44,7 @@ mod_tapInputModule_ui <- function(id){
 #' tapInputModule Server Function
 #'
 #' @noRd 
-mod_tapInputModule_server <- function(input, output, session){
+mod_tapInputModule_server <- function(input, output, session, globals){
   ns <- session$ns
   output$rect1 <- renderImage({
     # When input$n is 3, filename is ./images/image3.jpeg

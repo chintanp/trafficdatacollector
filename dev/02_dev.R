@@ -19,12 +19,22 @@ usethis::use_package( "thinkr" )
 usethis::use_package( "ipify" )
 usethis::use_package( "bs4Dash" )
 usethis::use_package( "shape" )
+usethis::use_package( "odbc" )
+usethis::use_package( "DBI" )
+usethis::use_package( "dbplyr" )
+usethis::use_package( "dplyr" )
+usethis::use_package( "glue" )
+usethis::use_package( "RODBC" )
+usethis::use_package( "DT" )
+usethis::use_package( "shinyWidgets" )
+# usethis::use_package( "tidyverse" )
 # usethis::use_package("r2d3")
 ## Add modules ----
 ## Create a module infrastructure in R/
 golem::add_module( name = "formModule" ) # Name of the module
 golem::add_module( name = "tableModule" ) # Name of the module
 golem::add_module( name = "tapInputModule" ) # Name of the module
+golem::add_module( name = "summaryModule" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*
@@ -36,6 +46,7 @@ golem::add_utils( "helpers" )
 golem::add_js_file( "script" )
 golem::add_js_handler( "handlers" )
 golem::add_css_file( "custom" )
+# golem::use_external_js_file(url = "https://cdnjs.cloudflare.com/ajax/libs/two.js/0.6.0/two.min.js", name = "twojs")
 
 ## Add internal datasets ----
 ## If you have data in your package

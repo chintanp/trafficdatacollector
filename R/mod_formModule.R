@@ -46,9 +46,10 @@ mod_formModule_ui <- function(id) {
 #' formModule Server Function
 #'
 #' @noRd
-mod_formModule_server <- function(input, output, session) {
+mod_formModule_server <- function(input, output, session, globals) {
   ns <- session$ns
-  
+  print("this")
+
 }
 
 ## To be copied in the UI

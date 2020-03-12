@@ -12,7 +12,8 @@ app_ui <- function(request) {
     mod_tapInputModule_ui("tapInputModule_ui_1")
   )
   
-  summary_tab <- bs4Dash::bs4TabItem(tabName = "summary_tab")
+  summary_tab <- bs4Dash::bs4TabItem(tabName = "summary_tab", 
+                                     mod_summaryModule_ui("summaryModule_ui_1"))
   
   tagList(
     # Leave this function for adding external resources
@@ -82,7 +83,9 @@ golem_add_external_resources <- function() {
   
   tags$head(favicon(),
             bundle_resources(path = app_sys('app/www'),
-                             app_title = 'trafficdatacollector'))
+                             app_title = 'trafficdatacollector') 
+            # tags$script(src= "https://cdnjs.cloudflare.com/ajax/libs/two.js/0.6.0/two.min.js"))
             # Add here other external resources
             # for example, you can add shinyalert::useShinyalert() ))
+  )
 }
