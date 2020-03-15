@@ -15,7 +15,7 @@ mod_tableModule_ui <- function(id) {
     bs4Dash::bs4Card(
       title = "Input Table",
       closable = FALSE,
-      status = "purple",
+      status = "warning",
       collapsible = TRUE,
       elevation = 4,
       width = NULL,

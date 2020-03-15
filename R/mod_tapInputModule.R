@@ -137,7 +137,7 @@ mod_tapInputModule_ui <- function(id) {
           style = "bordered",
           
           block = FALSE,
-          size = "sm",
+          size = "sm", 
           tags$i(class = "fa fa-caret-down fa-10x",
                  style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
         ),
