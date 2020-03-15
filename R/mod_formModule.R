@@ -30,11 +30,22 @@ mod_formModule_ui <- function(id) {
           )
         ),
         fluidRow(
-          column(4, textInput("weather", "Weather", "")
+          column(4, selectInput("weather",
+                                "Weather",
+                                c("Sunny", "Partly Cloudy","Cloudy","Raining","Snowing"),
+                                selected = "sunny",
+                                multiple = FALSE),
+                                
           ),
           column(4, textInput("name", "Name", "")
           ),
           column(4, textInput("notes", "Notes", "")
+          ),
+          column(4,selectInput("actTemp",
+                                "Temperature",
+                                c("Below Zero","0-20","20-32","32-50","50-62","62-75","75-85","85-100","100+"),
+                                selected = "62-75",
+                                multiple = FALSE),
           )
         )
       )
