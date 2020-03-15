@@ -13,13 +13,14 @@ mod_tapInputModule_ui <- function(id) {
   tagList(shiny::fluidRow(column(
     12,
     bs4Dash::bs4Card(
-      title = "Traffic data input",
+      title = "Direction Counter",
       closable = FALSE,
       status = "purple",
       collapsible = TRUE,
       elevation = 4,
       width = NULL,
       solidHeader = TRUE,
+      maximizable = TRUE,
       # HTML('<div style="position:relative; height: 600px">
       #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
       #   style="position:absolute; top:10px; left: 20px; opacity:0.4;filter:alpha(opacity=40);"/>
@@ -38,7 +39,7 @@ mod_tapInputModule_ui <- function(id) {
       # top row
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90)"),
+               style = " padding: 0px 10px 0px 10px"),
         shinyWidgets::actionBttn(
           ns("north_left_btn"),
           0,
@@ -48,7 +49,7 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm", 
           tags$i(class = "fa fa-caret-left fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         shinyWidgets::actionBttn(
           ns("north_down_btn"),
@@ -59,7 +60,7 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-down fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         shinyWidgets::actionBttn(
           ns("north_right_btn"),
@@ -70,17 +71,19 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-right fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
+               style = "padding: 0px 10px 0px 10px"),
         img(
           src = "https://image.flaticon.com/icons/svg/731/731590.svg",
-          width = "100px",
-          height = "100px"
+          width = "200px",
+          height = "200px", 
+          style ="padding: 40px"
         )
       ),
       fluidRow(
+        tags$div(
         shinyWidgets::actionBttn(
           ns("west_up_btn"),
           0,
@@ -90,8 +93,8 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
-        ),
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        ), style="padding: 0px 400px 0px 20px;"),
         shinyWidgets::actionBttn(
           ns("east_up_btn"),
           0,
@@ -106,6 +109,7 @@ mod_tapInputModule_ui <- function(id) {
       ),
       
       fluidRow(
+        tags$div(
         shinyWidgets::actionBttn(
           ns("west_right_btn"),
           0,
@@ -115,8 +119,8 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-right fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 450px 0px 20px; border: 0px; margin: 0px")
-        ),
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        ), style = "padding: 0px 450px 0px 20px;"),
         shinyWidgets::actionBttn(
           ns("east_left_btn"),
           0,
@@ -130,6 +134,7 @@ mod_tapInputModule_ui <- function(id) {
         )
       ),
       fluidRow(
+        tags$div(
         shinyWidgets::actionBttn(
           ns("west_down_btn"),
           0,
@@ -139,8 +144,8 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-down fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
-        ),
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        ), style = "padding: 0px 400px 0px 20px;"),
         shinyWidgets::actionBttn(
           ns("east_down_btn"),
           0,
@@ -157,7 +162,7 @@ mod_tapInputModule_ui <- function(id) {
       # bottom row
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90)"),
+               style = " padding: 0px 10px 0px 10px"),
         shinyWidgets::actionBttn(
           ns("south_left_btn"),
           0,
@@ -167,7 +172,7 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-left fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         shinyWidgets::actionBttn(
           ns("south_up_btn"),
@@ -178,7 +183,7 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         shinyWidgets::actionBttn(
           ns("south_right_btn"),
@@ -189,10 +194,10 @@ mod_tapInputModule_ui <- function(id) {
           block = FALSE,
           size = "sm",
           tags$i(class = "fa fa-caret-right fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+                 style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px")
+               style = " padding: 0px 10px 0px 10px")
       )
       
       #imageOutput("rect1", width = "100%", height = "400px")
