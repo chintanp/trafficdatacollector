@@ -29,6 +29,21 @@ GlobalModule <- function(input, output, session) {
   stash$male_no_helmet_count <- 0
   stash$female_no_helmet_count <- 0
   
+  stash$north_left_count <- 0
+  stash$north_down_count <- 0
+  stash$north_right_count <- 0
+  
+  stash$east_up_count <- 0
+  stash$east_left_count <- 0
+  stash$east_down_count <- 0
+  
+  stash$south_left_count <- 0
+  stash$south_up_count <- 0
+  stash$south_right_count <- 0
+  
+  stash$west_up_count <- 0
+  stash$west_right_count <- 0
+  stash$west_down_count <- 0
   # stash$conn <-  RODBC::odbcDriverConnect(glue::glue("Driver=ODBC Driver 17 for SQL Server;Server={Sys.getenv('DB_HOST')}; Database={Sys.getenv('DB_NAME')};Uid={Sys.getenv('DB_USERNAME')}; Pwd={Sys.getenv('DB_PASSWORD')}"))
   return (
     # list(

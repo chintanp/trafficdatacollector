@@ -39,46 +39,158 @@ mod_tapInputModule_ui <- function(id) {
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
                style = "color: rgb(0,166,90)"),
-        tags$i(class = "fa fa-caret-left fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
-        tags$i(class = "fa fa-caret-down fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
-        tags$i(class = "fa fa-caret-right fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
+        shinyWidgets::actionBttn(
+          ns("north_left_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm", 
+          tags$i(class = "fa fa-caret-left fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("north_down_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-down fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("north_right_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-right fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
         tags$i(class = "fa fa-square fa-10x",
                style = "color: rgb(0,166,90); padding: 20px"),
-        img(src = "https://image.flaticon.com/icons/svg/731/731590.svg", width="100px", height="100px")
+        img(
+          src = "https://image.flaticon.com/icons/svg/731/731590.svg",
+          width = "100px",
+          height = "100px"
+        )
       ),
       fluidRow(
-        tags$i(class = "fa fa-caret-up fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px"),
-        tags$i(class = "fa fa-caret-up fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        shinyWidgets::actionBttn(
+          ns("west_up_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-up fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("east_up_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-up fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        )
       ),
       
       fluidRow(
-        tags$i(class = "fa fa-caret-right fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px 450px 0px 20px; border: 0px; margin: 0px"),
-        tags$i(class = "fa fa-caret-left  fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        shinyWidgets::actionBttn(
+          ns("west_right_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-right fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px 450px 0px 20px; border: 0px; margin: 0px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("east_left_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-left  fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        )
       ),
       fluidRow(
-        tags$i(class = "fa fa-caret-down fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px"),
-        tags$i(class = "fa fa-caret-down  fa-10x",
-               style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        shinyWidgets::actionBttn(
+          ns("west_down_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-down fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("east_down_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-down  fa-10x",
+                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+        )
       ),
       
       # bottom row
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
                style = "color: rgb(0,166,90)"),
-        tags$i(class = "fa fa-caret-left fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
-        tags$i(class = "fa fa-caret-up fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
-        tags$i(class = "fa fa-caret-right fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
+        shinyWidgets::actionBttn(
+          ns("south_left_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-left fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("south_up_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-up fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
+        shinyWidgets::actionBttn(
+          ns("south_right_btn"),
+          0,
+          color = "primary",
+          style = "bordered",
+          
+          block = FALSE,
+          size = "sm",
+          tags$i(class = "fa fa-caret-right fa-10x",
+                 style = "color: rgb(0,166,90); padding: 20px")
+        ),
         tags$i(class = "fa fa-square fa-10x",
                style = "color: rgb(0,166,90); padding: 20px")
       )
@@ -95,15 +207,97 @@ mod_tapInputModule_ui <- function(id) {
 mod_tapInputModule_server <-
   function(input, output, session, globals) {
     ns <- session$ns
-    output$rect1 <- renderImage({
-      # When input$n is 3, filename is ./images/image3.jpeg
-      # filename <- normalizePath(file.path('./inst/app/grass.jpg'))
+
+    # 
+    # Wait for a button click 
+    
+    # North
+    observeEvent(input$north_left_btn, {
+      globals$stash$north_left_count <- globals$stash$north_left_count + 1
+      updateActionButton(session, "north_left_btn",
+                         label = as.character(globals$stash$north_left_count))
       
-      # Return a list containing the filename and alt text
-      list(src = './inst/app/grass.jpg',
-           alt = "grass")
+    })
+    
+    observeEvent(input$north_down_btn, {
+      globals$stash$north_down_count <- globals$stash$north_down_count + 1
+      updateActionButton(session, "north_down_btn",
+                         label = as.character(globals$stash$north_down_count))
       
-    }, deleteFile = FALSE)
+    })
+    
+    observeEvent(input$north_right_btn, {
+      globals$stash$north_right_count <- globals$stash$north_right_count + 1
+      updateActionButton(session, "north_right_btn",
+                         label = as.character(globals$stash$north_right_count))
+      
+    })
+    
+    # East
+    observeEvent(input$east_up_btn, {
+      globals$stash$east_up_count <- globals$stash$east_up_count + 1
+      updateActionButton(session, "east_up_btn",
+                         label = as.character(globals$stash$east_up_count))
+      
+    })
+    
+    observeEvent(input$east_left_btn, {
+      globals$stash$east_left_count <- globals$stash$east_left_count + 1
+      updateActionButton(session, "east_left_btn",
+                         label = as.character(globals$stash$east_left_count))
+      
+    })
+    
+    observeEvent(input$east_down_btn, {
+      globals$stash$east_down_count <- globals$stash$east_down_count + 1
+      updateActionButton(session, "east_down_btn",
+                         label = as.character(globals$stash$east_down_count))
+      
+    })
+    
+    # South
+    observeEvent(input$south_left_btn, {
+      globals$stash$south_left_count <- globals$stash$south_left_count + 1
+      updateActionButton(session, "south_left_btn",
+                         label = as.character(globals$stash$south_left_count))
+      
+    })
+    
+    observeEvent(input$south_right_btn, {
+      globals$stash$south_right_count <- globals$stash$south_right_count + 1
+      updateActionButton(session, "south_right_btn",
+                         label = as.character(globals$stash$south_right_count))
+      
+    })
+    
+    observeEvent(input$south_up_btn, {
+      globals$stash$south_up_count <- globals$stash$south_up_count + 1
+      updateActionButton(session, "south_up_btn",
+                         label = as.character(globals$stash$south_up_count))
+      
+    })
+    
+    # West
+    observeEvent(input$west_up_btn, {
+      globals$stash$west_up_count <- globals$stash$west_up_count + 1
+      updateActionButton(session, "west_up_btn",
+                         label = as.character(globals$stash$west_up_count))
+      
+    })
+    
+    observeEvent(input$west_right_btn, {
+      globals$stash$west_right_count <- globals$stash$west_right_count + 1
+      updateActionButton(session, "west_right_btn",
+                         label = as.character(globals$stash$west_right_count))
+      
+    })
+    
+    observeEvent(input$west_down_btn, {
+      globals$stash$west_down_count <- globals$stash$west_down_count + 1
+      updateActionButton(session, "west_down_btn",
+                         label = as.character(globals$stash$west_down_count))
+      
+    })
   }
 
 ## To be copied in the UI
