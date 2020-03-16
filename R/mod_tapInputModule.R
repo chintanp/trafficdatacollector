@@ -37,71 +37,88 @@ mod_tapInputModule_ui <- function(id) {
       
       # top row
       fluidRow(
-        tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90)"),
+        tags$i(class = "fa fa-square fa-10x", 
+               style = "color: rgb(0,166,90); padding: 10px"),
         shinyWidgets::actionBttn(
           ns("north_left_btn"),
           0,
-          color = "primary",
-          style = "bordered",
+          color = "primary", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+          style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
           
           block = FALSE,
           size = "sm", 
-          tags$i(class = "fa fa-caret-left fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+          tags$i(class = "fa fa-angle-left fa-5x", #MIKE MOD
+                 style = "color: rgb(0,166,90); padding: 20px") #MIKE MOD
         ),
         shinyWidgets::actionBttn(
           ns("north_down_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-down fa-10x",
+          tags$i(class = "fa fa-angle-down fa-5x", 
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         shinyWidgets::actionBttn(
           ns("north_right_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-right fa-10x",
+          tags$i(class = "fa fa-angle-right fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90); padding: 20px"),
+               style = "color: rgb(0,166,90); padding: 10px"), #MIKEMOD ADDED PADDING
         img(
           src = "https://image.flaticon.com/icons/svg/731/731590.svg",
           width = "100px",
           height = "100px"
         )
       ),
+      
       fluidRow(
         shinyWidgets::actionBttn(
           ns("west_up_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-up fa-5x",
+                 style = "color: rgb(0,166,90); padding: 0px 60px 0px 20px; border: 0px; margin: 0px") #mike mod 400=60
         ),
+        ## MIKES ATTEMPT:
+        fluidRow(
+          shinyWidgets::actionBttn(
+            ns("filler_bUtton"),
+            0,
+            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            
+            block = FALSE,
+            size = "sm", 
+            tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
+                   style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
+          )
+        
+        ),
+        ## END ATTEMPT
         shinyWidgets::actionBttn(
           ns("east_up_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-up fa-5x",
+                 style = "color: rgb(0,166,90); padding: 0px 60px 0px 20px; border: 0px; margin: 0px") #MIKEMOD
         )
       ),
       
@@ -110,23 +127,39 @@ mod_tapInputModule_ui <- function(id) {
           ns("west_right_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-right fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 450px 0px 20px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-right fa-5x",
+                 style = "color: rgb(0,166,90); padding: 0px 60px 0px 20px; border: 0px; margin: 0px") #MIKEMOD
         ),
+        ## MIKES ATTEMPT:
+        fluidRow(
+          shinyWidgets::actionBttn(
+            ns("filler_bUtton"),
+            0,
+            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            
+            block = FALSE,
+            size = "sm", 
+            tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
+                   style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
+          )
+          
+        ),
+        ## END ATTEMPT
         shinyWidgets::actionBttn(
           ns("east_left_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-left  fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-left  fa-5x",
+                 style = "color: rgb(0,166,90); padding: 0px 60px 0px 20px; border: 0px; margin: 0px") #MIKEMOD
         )
       ),
       fluidRow(
@@ -134,61 +167,77 @@ mod_tapInputModule_ui <- function(id) {
           ns("west_down_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm", 
-          tags$i(class = "fa fa-caret-down fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px 400px 0px 20px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-down fa-5x",
+                 style = "color: rgb(0,166,90);padding: 0px 60px 0px 20px; border: 0px; margin: 0px")
         ),
+        ## MIKES ATTEMPT:
+        fluidRow(
+          shinyWidgets::actionBttn(
+            ns("filler_bUtton"),
+            0,
+            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            
+            block = FALSE,
+            size = "sm", 
+            tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
+                   style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
+          )
+          
+        ),
+        ## END ATTEMPT
         shinyWidgets::actionBttn(
           ns("east_down_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-down  fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          tags$i(class = "fa fa-angle-down  fa-5x",
+                 style = "color: rgb(0,166,90); padding: 0px 60px 0px 20px; border: 0px; margin: 0px")
         )
       ),
       
       # bottom row
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90)"),
+               style = "color: rgb(0,166,90); padding: 10px"), #MIKEMOD added padding
         shinyWidgets::actionBttn(
           ns("south_left_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-left fa-10x",
+          tags$i(class = "fa fa-angle-left fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         shinyWidgets::actionBttn(
           ns("south_up_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 20px")
+          tags$i(class = "fa fa-angle-up fa-5x",
+                 style = "color: rgb(0,166,90); padding: 10px")
         ),
         shinyWidgets::actionBttn(
           ns("south_right_btn"),
           0,
           color = "primary",
-          style = "bordered",
+          style = "minimal",
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-caret-right fa-10x",
+          tags$i(class = "fa fa-angle-right fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         tags$i(class = "fa fa-square fa-10x",
