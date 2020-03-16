@@ -44,6 +44,16 @@ GlobalModule <- function(input, output, session) {
   stash$west_up_count <- 0
   stash$west_right_count <- 0
   stash$west_down_count <- 0
+
+  stash$name <- ''
+  stash$location <- ''
+  stash$time <- ''
+  stash$date <- ''
+  stash$notes <- ''
+  stash$weather <- ''
+  stash$temperature <- ''
+  
+  
   # stash$conn <-  RODBC::odbcDriverConnect(glue::glue("Driver=ODBC Driver 17 for SQL Server;Server={Sys.getenv('DB_HOST')}; Database={Sys.getenv('DB_NAME')};Uid={Sys.getenv('DB_USERNAME')}; Pwd={Sys.getenv('DB_PASSWORD')}"))
   return (
     # list(

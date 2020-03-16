@@ -13,7 +13,7 @@ mod_tableModule_ui <- function(id) {
   tagList(shiny::fluidRow(column(
     12,
     bs4Dash::bs4Card(
-      title = "Input Table",
+      title = "Helmet Counter",
       closable = FALSE,
       status = "warning",
       collapsible = TRUE,
@@ -25,55 +25,56 @@ mod_tableModule_ui <- function(id) {
           cardWrap = TRUE,
           bordered = TRUE,
           striped = TRUE,
+          style = "padding: 0px; text-align:center;",
           headTitles = c("Helmet",
                          "Male",
                          "Female",
                          "Total"),
           bs4Dash::bs4TableItems(
-            bs4Dash::bs4TableItem("with helmet"),
+            bs4Dash::bs4TableItem("with helmet", style = "padding: 10px; text-align:center;"),
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "helmet_male_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
-              block = TRUE, 
+              block = FALSE, 
               size = "sm"
-            )),
+            ), style = "padding: 10px; text-align:center;"),
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "helmet_female_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
-              block = TRUE, 
+              block = FALSE, 
               size = "sm"
-            )),
-            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("helmet_total")))
+            ), style = "padding: 10px; text-align:center;"),
+            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("helmet_total")), style = "padding: 10px; text-align:center;")
           ),
           bs4Dash::bs4TableItems(
-            bs4Dash::bs4TableItem("without helmet"),
+            bs4Dash::bs4TableItem("without helmet", style = "padding: 10px; text-align:center;"),
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "wo_helmet_male_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
-              block = TRUE, 
+              block = FALSE, 
               size = "sm"
-            )),
+            ), style = "padding: 10px; text-align:center;"),
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "wo_helmet_female_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
-              block = TRUE, 
+              block = FALSE, 
               size = "sm"
-            )),
-            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("wo_helmet_total")))
+            ), style = "padding: 10px; text-align:center;"),
+            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("wo_helmet_total")), style = "padding: 10px; text-align:center;")
           ),
           bs4Dash::bs4TableItems(
-            bs4Dash::bs4TableItem("Total"),
-            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("male_total"))),
-            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("female_total"))),
-            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("grand_total")))
+            bs4Dash::bs4TableItem("Total", style = "padding: 10px; text-align:center;"),
+            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("male_total")), style = "padding: 10px; text-align:center;"),
+            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("female_total")), style = "padding: 10px; text-align:center;"),
+            bs4Dash::bs4TableItem(dataCell = TRUE, textOutput(ns("grand_total")), style = "padding: 10px; text-align:center;")
           )
           
         )

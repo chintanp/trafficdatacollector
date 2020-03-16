@@ -1,3 +1,7 @@
 h2 {
   color: blue;
 }
+
+.bs4TableItem, tr, td, th {
+  padding: 0;
+}
