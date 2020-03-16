@@ -47,7 +47,7 @@ mod_tapInputModule_ui <- function(id) {
           style = "bordered",
           
           block = FALSE,
-          size = "sm", 
+          size = "sm",
           tags$i(class = "fa fa-caret-left fa-10x",
                  style = "color: rgb(0,166,90); padding: 0px 10px 0px 10px")
         ),
@@ -78,23 +78,25 @@ mod_tapInputModule_ui <- function(id) {
         img(
           src = "https://image.flaticon.com/icons/svg/731/731590.svg",
           width = "200px",
-          height = "200px", 
-          style ="padding: 40px"
+          height = "200px",
+          style = "padding: 40px"
         )
       ),
       fluidRow(
         tags$div(
-        shinyWidgets::actionBttn(
-          ns("west_up_btn"),
-          0,
-          color = "primary",
-          style = "bordered",
-          
-          block = FALSE,
-          size = "sm",
-          tags$i(class = "fa fa-caret-up fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
-        ), style="padding: 0px 400px 0px 20px;"),
+          shinyWidgets::actionBttn(
+            ns("west_up_btn"),
+            0,
+            color = "primary",
+            style = "bordered",
+            
+            block = FALSE,
+            size = "sm",
+            tags$i(class = "fa fa-caret-up fa-10x",
+                   style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          ),
+          style = "padding: 0px 400px 0px 20px;"
+        ),
         shinyWidgets::actionBttn(
           ns("east_up_btn"),
           0,
@@ -110,17 +112,19 @@ mod_tapInputModule_ui <- function(id) {
       
       fluidRow(
         tags$div(
-        shinyWidgets::actionBttn(
-          ns("west_right_btn"),
-          0,
-          color = "primary",
-          style = "bordered",
-          
-          block = FALSE,
-          size = "sm",
-          tags$i(class = "fa fa-caret-right fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
-        ), style = "padding: 0px 450px 0px 20px;"),
+          shinyWidgets::actionBttn(
+            ns("west_right_btn"),
+            0,
+            color = "primary",
+            style = "bordered",
+            
+            block = FALSE,
+            size = "sm",
+            tags$i(class = "fa fa-caret-right fa-10x",
+                   style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          ),
+          style = "padding: 0px 450px 0px 20px;"
+        ),
         shinyWidgets::actionBttn(
           ns("east_left_btn"),
           0,
@@ -135,17 +139,19 @@ mod_tapInputModule_ui <- function(id) {
       ),
       fluidRow(
         tags$div(
-        shinyWidgets::actionBttn(
-          ns("west_down_btn"),
-          0,
-          color = "primary",
-          style = "bordered",
-          
-          block = FALSE,
-          size = "sm", 
-          tags$i(class = "fa fa-caret-down fa-10x",
-                 style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
-        ), style = "padding: 0px 400px 0px 20px;"),
+          shinyWidgets::actionBttn(
+            ns("west_down_btn"),
+            0,
+            color = "primary",
+            style = "bordered",
+            
+            block = FALSE,
+            size = "sm",
+            tags$i(class = "fa fa-caret-down fa-10x",
+                   style = "color: rgb(0,166,90); padding: 0px; border: 0px; margin: 0px")
+          ),
+          style = "padding: 0px 400px 0px 20px;"
+        ),
         shinyWidgets::actionBttn(
           ns("east_down_btn"),
           0,
@@ -198,6 +204,12 @@ mod_tapInputModule_ui <- function(id) {
         ),
         tags$i(class = "fa fa-square fa-10x",
                style = " padding: 0px 10px 0px 10px")
+      ),
+      tags$br(),
+      fluidRow(
+        tags$div(
+        shinyWidgets::actionBttn(ns("submit_btn"), label = "Submit", color = "primary", size="md", style = "material-flat"), style = "padding: 0 20px 0 20px"), 
+        shinyWidgets::actionBttn(ns("reset_btn"), label = "Reset", color = "warning", size="md", style = "material-flat")
       )
       
       #imageOutput("rect1", width = "100%", height = "400px")
@@ -212,28 +224,32 @@ mod_tapInputModule_ui <- function(id) {
 mod_tapInputModule_server <-
   function(input, output, session, globals) {
     ns <- session$ns
-
-    # 
-    # Wait for a button click 
+    
+    #
+    # Wait for a button click
     
     # North
     observeEvent(input$north_left_btn, {
       globals$stash$north_left_count <- globals$stash$north_left_count + 1
-      updateActionButton(session, "north_left_btn",
+      updateActionButton(session,
+                         "north_left_btn",
                          label = as.character(globals$stash$north_left_count))
       
     })
     
     observeEvent(input$north_down_btn, {
       globals$stash$north_down_count <- globals$stash$north_down_count + 1
-      updateActionButton(session, "north_down_btn",
+      updateActionButton(session,
+                         "north_down_btn",
                          label = as.character(globals$stash$north_down_count))
       
     })
     
     observeEvent(input$north_right_btn, {
-      globals$stash$north_right_count <- globals$stash$north_right_count + 1
-      updateActionButton(session, "north_right_btn",
+      globals$stash$north_right_count <-
+        globals$stash$north_right_count + 1
+      updateActionButton(session,
+                         "north_right_btn",
                          label = as.character(globals$stash$north_right_count))
       
     })
@@ -241,21 +257,24 @@ mod_tapInputModule_server <-
     # East
     observeEvent(input$east_up_btn, {
       globals$stash$east_up_count <- globals$stash$east_up_count + 1
-      updateActionButton(session, "east_up_btn",
+      updateActionButton(session,
+                         "east_up_btn",
                          label = as.character(globals$stash$east_up_count))
       
     })
     
     observeEvent(input$east_left_btn, {
       globals$stash$east_left_count <- globals$stash$east_left_count + 1
-      updateActionButton(session, "east_left_btn",
+      updateActionButton(session,
+                         "east_left_btn",
                          label = as.character(globals$stash$east_left_count))
       
     })
     
     observeEvent(input$east_down_btn, {
       globals$stash$east_down_count <- globals$stash$east_down_count + 1
-      updateActionButton(session, "east_down_btn",
+      updateActionButton(session,
+                         "east_down_btn",
                          label = as.character(globals$stash$east_down_count))
       
     })
@@ -263,21 +282,25 @@ mod_tapInputModule_server <-
     # South
     observeEvent(input$south_left_btn, {
       globals$stash$south_left_count <- globals$stash$south_left_count + 1
-      updateActionButton(session, "south_left_btn",
+      updateActionButton(session,
+                         "south_left_btn",
                          label = as.character(globals$stash$south_left_count))
       
     })
     
     observeEvent(input$south_right_btn, {
-      globals$stash$south_right_count <- globals$stash$south_right_count + 1
-      updateActionButton(session, "south_right_btn",
+      globals$stash$south_right_count <-
+        globals$stash$south_right_count + 1
+      updateActionButton(session,
+                         "south_right_btn",
                          label = as.character(globals$stash$south_right_count))
       
     })
     
     observeEvent(input$south_up_btn, {
       globals$stash$south_up_count <- globals$stash$south_up_count + 1
-      updateActionButton(session, "south_up_btn",
+      updateActionButton(session,
+                         "south_up_btn",
                          label = as.character(globals$stash$south_up_count))
       
     })
@@ -285,24 +308,49 @@ mod_tapInputModule_server <-
     # West
     observeEvent(input$west_up_btn, {
       globals$stash$west_up_count <- globals$stash$west_up_count + 1
-      updateActionButton(session, "west_up_btn",
+      updateActionButton(session,
+                         "west_up_btn",
                          label = as.character(globals$stash$west_up_count))
       
     })
     
     observeEvent(input$west_right_btn, {
       globals$stash$west_right_count <- globals$stash$west_right_count + 1
-      updateActionButton(session, "west_right_btn",
+      updateActionButton(session,
+                         "west_right_btn",
                          label = as.character(globals$stash$west_right_count))
       
     })
     
     observeEvent(input$west_down_btn, {
       globals$stash$west_down_count <- globals$stash$west_down_count + 1
-      updateActionButton(session, "west_down_btn",
+      updateActionButton(session,
+                         "west_down_btn",
                          label = as.character(globals$stash$west_down_count))
       
     })
+    
+    observeEvent(input$submit_btn, {
+      print("submitted")
+      print(globals$stash$name)
+      print(globals$stash$date)
+      print(globals$stash$time)
+      print(globals$stash$temperature)
+      print(globals$stash$location)
+      print(globals$stash$notes)
+      print(globals$stash$weather)
+      validate(
+        need(globals$stash$location != "", "Please select a location"),
+        need(globals$stash$time != "", "Please select a time"),
+        need(globals$stash$date != "", "Please select a date"), 
+        need(globals$stash$weather != "", "Please select a weather"), 
+        need(globals$stash$name != "", "Please enter a name")
+      )
+      db_conn = globals$stash$conn
+      
+      DBI::dbGetQuery(db_conn, "insert into ")
+    })
+
   }
 
 ## To be copied in the UI

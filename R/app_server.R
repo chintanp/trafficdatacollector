@@ -13,6 +13,8 @@ app_server <- function( input, output, session ) {
   callModule(mod_tapInputModule_server, "tapInputModule_ui_1", GlobalData)
   callModule(mod_summaryModule_server, "summaryModule_ui_1", GlobalData)
   
+
+  
   observeEvent(input$alert,{
     golem::invoke_js("alert", "Yaya!")
   })

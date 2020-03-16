@@ -35,7 +35,7 @@ mod_tableModule_ui <- function(id) {
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "helmet_male_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
               block = FALSE, 
               size = "sm"
@@ -43,7 +43,7 @@ mod_tableModule_ui <- function(id) {
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "helmet_female_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
               block = FALSE, 
               size = "sm"
@@ -55,7 +55,7 @@ mod_tableModule_ui <- function(id) {
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "wo_helmet_male_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
               block = FALSE, 
               size = "sm"
@@ -63,7 +63,7 @@ mod_tableModule_ui <- function(id) {
             bs4Dash::bs4TableItem(dataCell = TRUE, shinyWidgets::actionBttn(ns(
               "wo_helmet_female_btn"), 0,
               color = "royal",
-              style = "jelly",
+              style = "material-flat",
               icon = icon("plus"),
               block = FALSE, 
               size = "sm"
