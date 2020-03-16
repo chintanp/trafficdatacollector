@@ -33,8 +33,8 @@ mod_formModule_ui <- function(id) {
             selectInput(
               ns("time"),
               "Time",
-              c("7:00AM - 9:00AM", "4:00PM - 6:00PM"),
-              selected = "7:00AM - 9:00AM",
+              c("7-9 AM", "4-6 PM"),
+              selected = "7-9 AM",
               multiple = FALSE
             )
           )

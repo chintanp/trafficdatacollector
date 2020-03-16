@@ -208,8 +208,22 @@ mod_tapInputModule_ui <- function(id) {
       tags$br(),
       fluidRow(
         tags$div(
-        shinyWidgets::actionBttn(ns("submit_btn"), label = "Submit", color = "primary", size="md", style = "material-flat"), style = "padding: 0 20px 0 20px"), 
-        shinyWidgets::actionBttn(ns("reset_btn"), label = "Reset", color = "warning", size="md", style = "material-flat")
+          shinyWidgets::actionBttn(
+            ns("submit_btn"),
+            label = "Submit",
+            color = "primary",
+            size = "md",
+            style = "material-flat"
+          ),
+          style = "padding: 0 20px 0 20px"
+        ),
+        shinyWidgets::actionBttn(
+          ns("reset_btn"),
+          label = "Reset",
+          color = "warning",
+          size = "md",
+          style = "material-flat"
+        )
       )
       
       #imageOutput("rect1", width = "100%", height = "400px")
@@ -339,18 +353,52 @@ mod_tapInputModule_server <-
       print(globals$stash$location)
       print(globals$stash$notes)
       print(globals$stash$weather)
-      validate(
-        need(globals$stash$location != "", "Please select a location"),
-        need(globals$stash$time != "", "Please select a time"),
-        need(globals$stash$date != "", "Please select a date"), 
-        need(globals$stash$weather != "", "Please select a weather"), 
-        need(globals$stash$name != "", "Please enter a name")
-      )
-      db_conn = globals$stash$conn
+      location_id <-
+        globals$stash$locations$LocationID[globals$stash$locations$Intersection == globals$stash$location]
+      # validate(
+      #   need(globals$stash$location != "", "Please select a location"),
+      #   need(globals$stash$time != "", "Please select a time"),
+      #   need(globals$stash$date != "", "Please select a date"),
+      #   need(globals$stash$weather != "", "Please select a weather"),
+      #   need(globals$stash$name != "", "Please enter a name")
+      # )
+      db_conn <- globals$stash$conn
       
-      DBI::dbGetQuery(db_conn, "insert into ")
+      sqlQueryStr <-
+        "insert into Counts (LocationID, Volunteer, Date, Weather, TimePeriod, NorthBoundLeft, NorthBoundRight, NorthBoundThrough, 
+      SouthBoundLeft, SouthBoundRight, SouthBoundThrough, EastBoundLeft, EastBoundRight, EastBoundThrough, 
+      WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale) values 
+      ?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left, 
+      ?south_bound_right, ?south_bound_through, ?east_bound_left, ?east_bound_right, ?east_bound_through, ?west_bound_left, $west_bound_right,
+      ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female"
+      
+      sqlQuery <- DBI::sqlInterpolate(db_conn, sqlQueryStr, 
+                                 location_id = location_id, 
+                                 name = globals$stash$name,
+                                 date = globals$stash$date, 
+                                 weather = globals$stash$weather,
+                                 time_period = globals$stash$time, 
+                                 north_bound_left = globals$stash$south_left_count,
+                                 north_bound_right = globals$stash$south_right_count,
+                                 north_bound_through = globals$stash$south_up_count,
+                                 south_bound_left = globals$stash$north_left_count,
+                                 south_bound_right = globals$stash$north_right_count,
+                                 south_bound_through = globals$stash$north_down_count,
+                                 east_bound_left = globals$stash$west_up_count,
+                                 east_bound_right = globals$stash$west_down_count,
+                                 east_bound_through = globals$stash$west_right_count,
+                                 west_bound_left = globals$stash$east_down_count,
+                                 west_bound_right = globals$stash$east_up_count,
+                                 west_bound_through = globals$stash$east_left_count,
+                                 helmet_male = globals$stash$male_helmet_count,
+                                 helmet_female = globals$stash$female_helmet_count,
+                                 no_helmet_male = globals$stash$male_no_helmet_count,
+                                 no_helmet_female = globals$stash$female_no_helmet_count)
+      
+      DBI::dbGetQuery(db_conn, sqlQuery)
+      
     })
-
+    
   }
 
 ## To be copied in the UI
