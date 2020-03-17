@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of trafficdatacollector is to aid the field officers in traffic
-data collection.
+data collection as well as view the collected data.
 
 ## Example
 
@@ -21,29 +21,25 @@ library(trafficdatacollector)
 ## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Things to note about the package:
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+1.  Uses `golem` to generate a package from R Shiny code.
+    (<https://github.com/ThinkR-open/golem>)
+2.  Uses modules for effective code management.
+    (<https://shiny.rstudio.com/articles/modules.html>)
+3.  Validation of user inputs before insertion into database using
+    sqlInterpolate to avoid SQL injection attacks.
+    (<https://www.rdocumentation.org/packages/DBI/versions/0.5-1/topics/sqlInterpolate>)
+4.  Uses `bs4Dash` to get the husky colors and `shinyWidgets`
+    actionBttn. (<https://rinterface.github.io/bs4Dash/index.html>,
+    <https://github.com/dreamRs/shinyWidgets>)
+5.  Diabling buttons until all the required fields have been filled
+    using shinyjs. (<https://deanattali.com/shinyjs/>)
+6.  Mobile-friendly user-interface except the direction counter.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+### Publicly hosted
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+Shinyapps: <https://cp84.shinyapps.io/trafficdatacollector/>
 
 Please note that the ‘trafficdatacollector’ project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
