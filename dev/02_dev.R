@@ -27,6 +27,8 @@ usethis::use_package( "glue" )
 usethis::use_package( "RODBC" )
 usethis::use_package( "DT" )
 usethis::use_package( "shinyWidgets" )
+usethis::use_package( "shinyTime" )
+usethis::use_package( "shinyjs" )
 # usethis::use_package( "tidyverse" )
 # usethis::use_package("r2d3")
 ## Add modules ----
@@ -35,6 +37,7 @@ golem::add_module( name = "formModule" ) # Name of the module
 golem::add_module( name = "tableModule" ) # Name of the module
 golem::add_module( name = "tapInputModule" ) # Name of the module
 golem::add_module( name = "summaryModule" ) # Name of the module
+golem::add_module( name = "travelerSurveyModule" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*

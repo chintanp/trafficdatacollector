@@ -15,11 +15,15 @@ app_ui <- function(request) {
   summary_tab <- bs4Dash::bs4TabItem(tabName = "summary_tab", 
                                      mod_summaryModule_ui("summaryModule_ui_1"))
   
+  survey_tab <- bs4Dash::bs4TabItem(tabName = "survey_tab", 
+                                    mod_travelerSurveyModule_ui("travelerSurveyModule_ui_1"))
+  
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here
     bs4Dash::bs4DashPage(
+      
       enable_preloader = FALSE,
       navbar = bs4Dash::bs4DashNavbar(
         skin = "light",
@@ -43,6 +47,9 @@ app_ui <- function(request) {
           bs4Dash::bs4SidebarMenuItem("Home",
                              tabName = "home_tab",
                              icon = "home"),
+          bs4Dash::bs4SidebarMenuItem("Survey",
+                                      tabName = "survey_tab",
+                                      icon = "thermometer-half"),
           bs4Dash::bs4SidebarMenuItem("Summary",
                              tabName = "summary_tab",
                              icon = "chart-bar")
@@ -60,8 +67,10 @@ app_ui <- function(request) {
       ),
       title = "test",
       body = bs4Dash::bs4DashBody(
+        shinyjs::useShinyjs(),
         bs4Dash::bs4TabItems(
           home_tab, 
+          survey_tab,
           summary_tab
         )
         

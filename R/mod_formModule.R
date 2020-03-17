@@ -20,7 +20,7 @@ mod_formModule_ui <- function(id) {
       width = NULL,
       solidHeader = TRUE,
       div(
-        id = "form",
+        id = ns("form"),
         fluidRow(
           column(4, selectInput(
             inputId = ns("location_select"),
@@ -33,8 +33,8 @@ mod_formModule_ui <- function(id) {
             selectInput(
               ns("time"),
               "Time",
-              c("7-9 AM", "4-6 PM"),
-              selected = "7-9 AM",
+              c("7-9am", "4-6pm"),
+              selected = "7-9am",
               multiple = FALSE
             )
           )
@@ -45,8 +45,15 @@ mod_formModule_ui <- function(id) {
             selectInput(
               ns("weather"),
               "Weather",
-              c("Sunny", "Partly Cloudy", "Cloudy", "Raining", "Snowing"),
-              selected = "Sunny",
+              c(
+                "sunny and dry",
+                "cloudy, windy",
+                "overcast, no rain",
+                "overcast",
+                "light rain",
+                "raining"
+              ),
+              selected = "sunny and dry",
               multiple = FALSE
             )
             
@@ -55,23 +62,31 @@ mod_formModule_ui <- function(id) {
           column(4, textInput(ns("notes"), "Notes", "")),
           column(
             4,
-            selectInput(
-              ns("actTemp"),
-              "Temperature (F)",
-              c(
-                "Below Zero",
-                "0-20",
-                "20-32",
-                "32-50",
-                "50-62",
-                "62-75",
-                "75-85",
-                "85-100",
-                "100+"
-              ),
-              selected = "62-75",
-              multiple = FALSE
+            sliderInput(
+              inputId = ns("actTemp"),
+              label = "Temperature (F)",
+              min = -128,
+              max = 136,
+              value = 60,
+              step = 1
             )
+            # selectInput(
+            #   ns("actTemp"),
+            #   "Temperature (F)",
+            #   c(
+            #     "Below Zero",
+            #     "0-20",
+            #     "20-32",
+            #     "32-50",
+            #     "50-62",
+            #     "62-75",
+            #     "75-85",
+            #     "85-100",
+            #     "100+"
+            #   ),
+            #   selected = "62-75",
+            #   multiple = FALSE
+            # )
           )
         )
       )
@@ -86,18 +101,36 @@ mod_formModule_ui <- function(id) {
 mod_formModule_server <- function(input, output, session, globals) {
   ns <- session$ns
   
-  observeEvent(input$location_select, {
-    
+  initialInputs <- isolate(reactiveValuesToList(input))
+  
+  observe({
+    # OPTIONAL - save initial values of dynamic inputs
+    inputValues <- reactiveValuesToList(input)
+    initialInputs <<- utils::modifyList(inputValues, initialInputs)
+  })
+  
+  observe({
     db_conn = globals$stash$conn
     
-    globals$stash$locations <- 
+    globals$stash$locations <-
       DBI::dbGetQuery(db_conn, "select * from Locations")
     
-    updateSelectInput(
-      session,
-      inputId = "location_select",
-      choices = globals$stash$locations$Intersection
-    )
+    updateSelectInput(session,
+                      inputId = "location_select",
+                      choices = globals$stash$locations$Intersection)
+  })
+  
+  observeEvent(input$location_select, {
+    # db_conn = globals$stash$conn
+    #
+    # globals$stash$locations <-
+    #   DBI::dbGetQuery(db_conn, "select * from Locations")
+    #
+    # updateSelectInput(
+    #   session,
+    #   inputId = "location_select",
+    #   choices = globals$stash$locations$Intersection
+    # )
   })
   
   observe({
@@ -110,6 +143,26 @@ mod_formModule_server <- function(input, output, session, globals) {
     globals$stash$temperature = input$actTemp
   })
   
+  # return this input so the elements can be used/modified in other modules
+  return (list(
+    input,
+    resetFormElements = function() {
+     
+      # output$name <- renderText({
+      #   ""
+      # })
+      # output$notes <- renderText({
+      #   ""
+      # })
+      
+      for (id in names(initialInputs)) {
+        value <- initialInputs[[id]]
+        # For empty checkboxGroupInputs
+        if (is.null(value)) value <- ""
+        session$sendInputMessage(id, list(value = value))
+      }
+    }
+  ))
 }
 
 ## To be copied in the UI

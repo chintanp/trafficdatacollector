@@ -251,7 +251,7 @@ mod_tapInputModule_ui <- function(id) {
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         tags$i(class = "fa fa-square fa-10x",
-               style = " padding: 0px 10px 0px 10px")
+               style = " color: rgb(0,166,90); padding: 10px")
       ),
       tags$br(),
       fluidRow(
@@ -284,7 +284,7 @@ mod_tapInputModule_ui <- function(id) {
 #'
 #' @noRd
 mod_tapInputModule_server <-
-  function(input, output, session, globals) {
+  function(input, output, session, globals, formInputs, tableInputs) {
     ns <- session$ns
     
     #
@@ -416,15 +416,15 @@ mod_tapInputModule_server <-
         "insert into Counts (LocationID, Volunteer, Date, Weather, TimePeriod, NorthBoundLeft, NorthBoundRight, NorthBoundThrough, 
       SouthBoundLeft, SouthBoundRight, SouthBoundThrough, EastBoundLeft, EastBoundRight, EastBoundThrough, 
       WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale) values 
-      ?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left, 
+      (?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left, 
       ?south_bound_right, ?south_bound_through, ?east_bound_left, ?east_bound_right, ?east_bound_through, ?west_bound_left, ?west_bound_right,
-      ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female"
+      ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female)"
       
       sqlQuery <- DBI::sqlInterpolate(db_conn, sqlQueryStr, 
                                  location_id = location_id, 
                                  name = globals$stash$name,
                                  date = globals$stash$date, 
-                                 weather = globals$stash$weather,
+                                 weather = paste(as.character(globals$stash$temperature), globals$stash$weather, sep = ", "),
                                  time_period = globals$stash$time, 
                                  north_bound_left = globals$stash$south_left_count,
                                  north_bound_right = globals$stash$south_right_count,
@@ -443,9 +443,50 @@ mod_tapInputModule_server <-
                                  no_helmet_male = globals$stash$male_no_helmet_count,
                                  no_helmet_female = globals$stash$female_no_helmet_count)
       
-      DBI::dbGetQuery(db_conn, sqlQuery)
+      dbout <- DBI::dbGetQuery(db_conn, sqlQuery)
+      
+      showModal(
+        modalDialog(
+          title = "Submit Message",
+          paste("Data entered into the database:", dbout),
+          footer = shinyWidgets::actionBttn(ns("closeModalBtn"), "Close",
+                                            color = "success",
+                                            size = "md",
+                                            style = "material-flat")
+        )
+      )
+      
+      
       
     })
+    
+    observeEvent(input$reset_btn, {
+      resetInputUI()
+    })
+    
+    observeEvent(input$closeModalBtn, {
+      
+      removeModal() 
+      resetInputUI()
+      
+    })
+    
+    resetInputUI <- function() {
+      # reset all the widgets
+      inputElements <- c("north_right_btn", "north_left_btn", "north_down_btn", 
+                         "east_left_btn", "east_up_btn", "east_down_btn", 
+                         "south_right_btn", "south_left_btn", "south_up_btn", 
+                         "west_right_btn", "west_up_btn", "west_down_btn")
+      
+      for (str in inputElements){
+        updateActionButton(session, inputId = str, label = 0)
+      }
+
+      tableInputs$resetHelmetElements()
+      
+      formInputs$resetFormElements()
+
+    }
     
   }
 

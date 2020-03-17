@@ -174,6 +174,41 @@ mod_tableModule_server <- function(input, output, session, globals) {
                      globals$stash$male_no_helmet_count + globals$stash$female_no_helmet_count)
     })
   })
+  
+  
+  
+  return (list(input, 
+               resetHelmetElements = function() {
+                 # reset the helmet counter
+                 helmetElements <- c("helmet_male_btn", 
+                                     "helmet_female_btn", 
+                                     "wo_helmet_male_btn", 
+                                     "wo_helmet_female_btn")
+                 
+                 for (str in helmetElements) {
+                   # shinyjs::reset(str)
+                   updateActionButton(session, inputId = str, label = 0)
+                 }
+                 
+                 # Update the Helmet total
+                 output$helmet_total <- renderText({
+                   as.character(0)
+                 })
+                 # Update the male total
+                 output$male_total <- renderText({
+                   as.character(0)
+                 })
+                 output$female_total <- renderText({
+                   as.character(0)
+                 })
+                 output$wo_helmet_total <- renderText({
+                   as.character(0)
+                 })
+                 #Update the grand total
+                 output$grand_total <- renderText({
+                   as.character(0)
+                 })
+               }))
 }
 
 ## To be copied in the UI
