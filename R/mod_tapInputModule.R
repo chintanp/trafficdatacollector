@@ -38,16 +38,18 @@ mod_tapInputModule_ui <- function(id) {
       
       # top row
       fluidRow(
-        tags$i(class = "fa fa-square fa-10x", 
+        tags$i(class = "fa fa-square fa-10x",
                style = "color: rgb(0,166,90); padding: 10px"),
         shinyWidgets::actionBttn(
           ns("north_left_btn"),
           0,
-          color = "primary", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
-          style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
-    
+          color = "primary",
+          #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+          style = "minimal",
+          # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+          
           block = FALSE,
-          size = "sm", 
+          size = "sm",
           tags$i(class = "fa fa-angle-left fa-5x", #MIKE MOD
                  style = "color: rgb(0,166,90); padding: 20px") #MIKE MOD
         ),
@@ -59,9 +61,9 @@ mod_tapInputModule_ui <- function(id) {
           
           block = FALSE,
           size = "sm",
-          tags$i(class = "fa fa-angle-down fa-5x", 
+          tags$i(class = "fa fa-angle-down fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
-
+          
         ),
         shinyWidgets::actionBttn(
           ns("north_right_btn"),
@@ -75,7 +77,8 @@ mod_tapInputModule_ui <- function(id) {
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90); padding: 10px"), #MIKEMOD ADDED PADDING
+               style = "color: rgb(0,166,90); padding: 10px"),
+        #MIKEMOD ADDED PADDING
         img(
           src = "https://image.flaticon.com/icons/svg/731/731590.svg",
           width = "200px",
@@ -101,16 +104,18 @@ mod_tapInputModule_ui <- function(id) {
           shinyWidgets::actionBttn(
             ns("filler_bUtton"),
             0,
-            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
-            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            color = "default",
+            #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal",
+            # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
             
             block = FALSE,
-            size = "sm", 
+            size = "sm",
             tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
                    style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
           )
-  
-      ),
+          
+        ),
         ## END ATTEMPT
         shinyWidgets::actionBttn(
           ns("east_up_btn"),
@@ -142,11 +147,13 @@ mod_tapInputModule_ui <- function(id) {
           shinyWidgets::actionBttn(
             ns("filler_bUtton"),
             0,
-            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
-            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            color = "default",
+            #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal",
+            # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
             
             block = FALSE,
-            size = "sm", 
+            size = "sm",
             tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
                    style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
           )
@@ -166,7 +173,6 @@ mod_tapInputModule_ui <- function(id) {
         )
       ),
       fluidRow(
-
         shinyWidgets::actionBttn(
           ns("west_down_btn"),
           0,
@@ -174,21 +180,23 @@ mod_tapInputModule_ui <- function(id) {
           style = "minimal",
           
           block = FALSE,
-          size = "sm", 
+          size = "sm",
           tags$i(class = "fa fa-angle-down fa-5x",
                  style = "color: rgb(0,166,90);padding: 0px 60px 0px 20px; border: 0px; margin: 0px")
-
+          
         ),
         ## MIKES ATTEMPT:
         fluidRow(
           shinyWidgets::actionBttn(
             ns("filler_bUtton"),
             0,
-            color = "default", #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
-            style = "minimal", # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
+            color = "default",
+            #MIKE MOD options “default”, “primary”, “warning”, “danger”, “success”, “royal”
+            style = "minimal",
+            # MIKE MOD options=“simple”, “bordered”, “minimal”, “stretch”, “jelly”, “gradient”, “fill”, “material-circle”, “material-flat”, “pill”, “float”, “unite”
             
             block = FALSE,
-            size = "sm", 
+            size = "sm",
             tags$i(class = "fas fa-biking fa-5x", #MIKE MOD
                    style = "color: rgb(0,166,90); padding: 0px 330px 0px 0px") #MIKE MOD
           )
@@ -211,7 +219,8 @@ mod_tapInputModule_ui <- function(id) {
       # bottom row
       fluidRow(
         tags$i(class = "fa fa-square fa-10x",
-               style = "color: rgb(0,166,90); padding: 10px"), #MIKEMOD added padding
+               style = "color: rgb(0,166,90); padding: 10px"),
+        #MIKEMOD added padding
         shinyWidgets::actionBttn(
           ns("south_left_btn"),
           0,
@@ -220,10 +229,10 @@ mod_tapInputModule_ui <- function(id) {
           
           block = FALSE,
           size = "sm",
-
+          
           tags$i(class = "fa fa-angle-left fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
-
+          
         ),
         shinyWidgets::actionBttn(
           ns("south_up_btn"),
@@ -233,10 +242,10 @@ mod_tapInputModule_ui <- function(id) {
           
           block = FALSE,
           size = "sm",
-
+          
           tags$i(class = "fa fa-angle-up fa-5x",
                  style = "color: rgb(0,166,90); padding: 10px")
-
+          
         ),
         shinyWidgets::actionBttn(
           ns("south_right_btn"),
@@ -246,7 +255,7 @@ mod_tapInputModule_ui <- function(id) {
           
           block = FALSE,
           size = "sm",
-
+          
           tags$i(class = "fa fa-angle-right fa-5x",
                  style = "color: rgb(0,166,90); padding: 20px")
         ),
@@ -284,10 +293,22 @@ mod_tapInputModule_ui <- function(id) {
 #'
 #' @noRd
 mod_tapInputModule_server <-
-  function(input, output, session, globals, formInputs, tableInputs) {
+  function(input,
+           output,
+           session,
+           globals,
+           formInputs,
+           tableInputs) {
     ns <- session$ns
     
-    #
+    observe({
+      if (is.null(formInputs[[1]]$name) || formInputs[[1]]$name == "") {
+        shinyjs::disable("submit_btn")
+      } else {
+        shinyjs::enable("submit_btn")
+      }
+    })
+    
     # Wait for a button click
     
     # North
@@ -413,48 +434,58 @@ mod_tapInputModule_server <-
       db_conn <- globals$stash$conn
       
       sqlQueryStr <-
-        "insert into Counts (LocationID, Volunteer, Date, Weather, TimePeriod, NorthBoundLeft, NorthBoundRight, NorthBoundThrough, 
-      SouthBoundLeft, SouthBoundRight, SouthBoundThrough, EastBoundLeft, EastBoundRight, EastBoundThrough, 
-      WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale) values 
-      (?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left, 
+        "insert into Counts (LocationID, Volunteer, Date, Weather, TimePeriod, NorthBoundLeft, NorthBoundRight, NorthBoundThrough,
+      SouthBoundLeft, SouthBoundRight, SouthBoundThrough, EastBoundLeft, EastBoundRight, EastBoundThrough,
+      WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale) values
+      (?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left,
       ?south_bound_right, ?south_bound_through, ?east_bound_left, ?east_bound_right, ?east_bound_through, ?west_bound_left, ?west_bound_right,
       ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female)"
       
-      sqlQuery <- DBI::sqlInterpolate(db_conn, sqlQueryStr, 
-                                 location_id = location_id, 
-                                 name = globals$stash$name,
-                                 date = globals$stash$date, 
-                                 weather = paste(as.character(globals$stash$temperature), globals$stash$weather, sep = ", "),
-                                 time_period = globals$stash$time, 
-                                 north_bound_left = globals$stash$south_left_count,
-                                 north_bound_right = globals$stash$south_right_count,
-                                 north_bound_through = globals$stash$south_up_count,
-                                 south_bound_left = globals$stash$north_left_count,
-                                 south_bound_right = globals$stash$north_right_count,
-                                 south_bound_through = globals$stash$north_down_count,
-                                 east_bound_left = globals$stash$west_up_count,
-                                 east_bound_right = globals$stash$west_down_count,
-                                 east_bound_through = globals$stash$west_right_count,
-                                 west_bound_left = globals$stash$east_down_count,
-                                 west_bound_right = globals$stash$east_up_count,
-                                 west_bound_through = globals$stash$east_left_count,
-                                 helmet_male = globals$stash$male_helmet_count,
-                                 helmet_female = globals$stash$female_helmet_count,
-                                 no_helmet_male = globals$stash$male_no_helmet_count,
-                                 no_helmet_female = globals$stash$female_no_helmet_count)
+      print(typeof(globals$stash$date))
+      
+      sqlQuery <- DBI::sqlInterpolate(
+        db_conn,
+        sqlQueryStr,
+        location_id = location_id,
+        name = globals$stash$name,
+        date = as.POSIXct(paste(globals$stash$date, "00:00:00"), format="%Y-%m-%d %H:%M:%S"),
+        weather = paste(
+          as.character(globals$stash$temperature),
+          globals$stash$weather,
+          sep = ", "
+        ),
+        time_period = globals$stash$time,
+        north_bound_left = globals$stash$south_left_count,
+        north_bound_right = globals$stash$south_right_count,
+        north_bound_through = globals$stash$south_up_count,
+        south_bound_left = globals$stash$north_left_count,
+        south_bound_right = globals$stash$north_right_count,
+        south_bound_through = globals$stash$north_down_count,
+        east_bound_left = globals$stash$west_up_count,
+        east_bound_right = globals$stash$west_down_count,
+        east_bound_through = globals$stash$west_right_count,
+        west_bound_left = globals$stash$east_down_count,
+        west_bound_right = globals$stash$east_up_count,
+        west_bound_through = globals$stash$east_left_count,
+        helmet_male = globals$stash$male_helmet_count,
+        helmet_female = globals$stash$female_helmet_count,
+        no_helmet_male = globals$stash$male_no_helmet_count,
+        no_helmet_female = globals$stash$female_no_helmet_count
+      )
       
       dbout <- DBI::dbGetQuery(db_conn, sqlQuery)
       
-      showModal(
-        modalDialog(
-          title = "Submit Message",
-          paste("Data entered into the database:", dbout),
-          footer = shinyWidgets::actionBttn(ns("closeModalBtn"), "Close",
-                                            color = "success",
-                                            size = "md",
-                                            style = "material-flat")
+      showModal(modalDialog(
+        title = "Submit Message",
+        paste("Data entered into the database:", dbout),
+        footer = shinyWidgets::actionBttn(
+          ns("closeModalBtn"),
+          "Close",
+          color = "success",
+          size = "md",
+          style = "material-flat"
         )
-      )
+      ))
       
       
       
@@ -465,27 +496,37 @@ mod_tapInputModule_server <-
     })
     
     observeEvent(input$closeModalBtn, {
-      
-      removeModal() 
+      removeModal()
       resetInputUI()
       
     })
     
     resetInputUI <- function() {
       # reset all the widgets
-      inputElements <- c("north_right_btn", "north_left_btn", "north_down_btn", 
-                         "east_left_btn", "east_up_btn", "east_down_btn", 
-                         "south_right_btn", "south_left_btn", "south_up_btn", 
-                         "west_right_btn", "west_up_btn", "west_down_btn")
+      inputElements <-
+        c(
+          "north_right_btn",
+          "north_left_btn",
+          "north_down_btn",
+          "east_left_btn",
+          "east_up_btn",
+          "east_down_btn",
+          "south_right_btn",
+          "south_left_btn",
+          "south_up_btn",
+          "west_right_btn",
+          "west_up_btn",
+          "west_down_btn"
+        )
       
-      for (str in inputElements){
+      for (str in inputElements) {
         updateActionButton(session, inputId = str, label = 0)
       }
-
+      
       tableInputs$resetHelmetElements()
       
       formInputs$resetFormElements()
-
+      
     }
     
   }

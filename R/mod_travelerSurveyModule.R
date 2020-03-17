@@ -22,9 +22,9 @@ mod_travelerSurveyModule_ui <- function(id) {
       div(
         id = "form",
         fluidRow(
-          column(6, dateInput(ns("date_survey"), "Date", format = "mm/dd/yyyy")),
+          column(6, dateInput(ns("date_survey"), "Date*", format = "mm/dd/yyyy")),
           column(4, shinyTime::timeInput(
-            ns("time_input1"), "Enter time", value = strptime("12:34:56", "%T")
+            ns("time_input1"), "Time*", value = strptime("12:34:56", "%T")
           )),
           column(
             2,
@@ -39,22 +39,22 @@ mod_travelerSurveyModule_ui <- function(id) {
           )
         ),
         fluidRow(column(6, textInput(
-          ns("name_survey"), "Volunteer Name", ""
+          ns("name_survey"), "Volunteer Name*", ""
         )),
         column(6, textInput(
-          ns("location_survey"), "Location", ""
+          ns("location_survey"), "Location*", ""
         ))),
         fluidRow(column(6, textInput(
-          ns("trip_origin"), "Trip Origin", ""
+          ns("trip_origin"), "Trip Origin*", ""
         )),
         column(
-          6, textInput(ns("trip_destination"), "Trip Destination", "")
+          6, textInput(ns("trip_destination"), "Trip Destination*", "")
         )),
         fluidRow(column(6, textInput(
-          ns("trip_purpose"), "Trip Purpose", ""
+          ns("trip_purpose"), "Trip Purpose*", ""
         )),
         column(
-          6, textInput(ns("bike_frequency"), "Frequency of Bike Travel", "")
+          6, textInput(ns("bike_frequency"), "Frequency of Bike Travel*", "")
         )),
         tags$br(),
         fluidRow(
@@ -88,6 +88,20 @@ mod_travelerSurveyModule_ui <- function(id) {
 mod_travelerSurveyModule_server <-
   function(input, output, session, globals) {
     ns <- session$ns
+    
+    observe({
+      if (is.null(input$name_survey) || input$name_survey == "" || 
+          is.null(input$location_survey) || input$location_survey == "" || 
+          is.null(input$trip_origin) || input$trip_origin == "" ||
+          is.null(input$trip_destination) || input$trip_destination == "" ||
+          is.null(input$trip_purpose) || input$trip_purpose == "" ||
+          is.null(input$bike_frequency) || input$bike_frequency == "" ) {
+        shinyjs::disable("submit_btn_survey")
+      } else {
+        shinyjs::enable("submit_btn_survey")
+      }
+    })
+    
     # Get system time
     observeEvent(input$to_current_time, {
       shinyTime::updateTimeInput(session, "time_input1", value = Sys.time())

@@ -27,7 +27,7 @@ mod_formModule_ui <- function(id) {
             label = "Location",
             choices = NULL
           )),
-          column(4, dateInput(ns("date3"), "Date", format = "mm/dd/yyyy")),
+          column(4, dateInput(ns("date3"), "Date", format = "yyyy-mm-dd"), value = Sys.Date()),
           column(
             4,
             selectInput(
