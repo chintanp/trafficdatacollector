@@ -29,6 +29,7 @@ usethis::use_package( "DT" )
 usethis::use_package( "shinyWidgets" )
 usethis::use_package( "shinyTime" )
 usethis::use_package( "shinyjs" )
+usethis::use_package( "pool" )
 # usethis::use_package( "tidyverse" )
 # usethis::use_package("r2d3")
 ## Add modules ----

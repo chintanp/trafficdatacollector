@@ -19,7 +19,6 @@ mod_tapInputModule_ui <- function(id) {
       collapsible = TRUE,
       elevation = 4,
       width = NULL,
-      solidHeader = TRUE,
       maximizable = TRUE,
       # HTML('<div style="position:relative; height: 600px">
       #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
@@ -298,7 +297,8 @@ mod_tapInputModule_server <-
            session,
            globals,
            formInputs,
-           tableInputs) {
+           tableInputs, 
+           summaryInputs) {
     ns <- session$ns
     
     observe({
@@ -448,7 +448,7 @@ mod_tapInputModule_server <-
         sqlQueryStr,
         location_id = location_id,
         name = globals$stash$name,
-        date = as.POSIXct(paste(globals$stash$date, "00:00:00"), format="%Y-%m-%d %H:%M:%S"),
+        date = as.character(as.POSIXct(paste(globals$stash$date, "00:00:00"), format="%Y-%m-%d %H:%M:%S")),
         weather = paste(
           as.character(globals$stash$temperature),
           globals$stash$weather,
@@ -473,7 +473,37 @@ mod_tapInputModule_server <-
         no_helmet_female = globals$stash$female_no_helmet_count
       )
       
+      print(sqlQuery)
+      
       dbout <- DBI::dbGetQuery(db_conn, sqlQuery)
+      
+      print(summaryInputs)
+      
+      summaryInputs$updateTable(data.frame("LocationID" = location_id,
+                                           "Volunteer" = globals$stash$name,
+                                           "Date" = as.POSIXct(paste(globals$stash$date, "00:00:00"), format="%Y-%m-%d %H:%M:%S"),
+                                           "Weather" = paste(
+                                             as.character(globals$stash$temperature),
+                                             globals$stash$weather,
+                                             sep = ", "
+                                           ),
+                                           "TimePeriod" = globals$stash$time,
+                                           "NorthBoundLeft" = globals$stash$south_left_count,
+                                           "NorthBoundRight" = globals$stash$south_right_count,
+                                           "NorthBoundThrough" = globals$stash$south_up_count,
+                                           "SouthBoundLeft" = globals$stash$north_left_count,
+                                           "SouthBoundRight" = globals$stash$north_right_count,
+                                           "SouthBoundThrough" = globals$stash$north_down_count,
+                                           "EastBoundLeft" = globals$stash$west_up_count,
+                                           "EastBoundRight" = globals$stash$west_down_count,
+                                           "EastBoundThrough" = globals$stash$west_right_count,
+                                           "WestBoundLeft" = globals$stash$east_down_count,
+                                           "WestBoundRight" = globals$stash$east_up_count,
+                                           "WestBoundThrough" = globals$stash$east_left_count,
+                                           "HelmetMale" = globals$stash$male_helmet_count,
+                                           "HelmetFemale" = globals$stash$female_helmet_count,
+                                           "NoHelmetMale" = globals$stash$male_no_helmet_count,
+                                           "NoHelmetFemale" = globals$stash$female_no_helmet_count))
       
       showModal(modalDialog(
         title = "Submit Message",
@@ -521,7 +551,24 @@ mod_tapInputModule_server <-
       
       for (str in inputElements) {
         updateActionButton(session, inputId = str, label = 0)
+        
       }
+      
+      globals$stash$south_left_count <- 0
+      globals$stash$south_right_count <- 0
+      globals$stash$south_up_count <- 0
+      
+      globals$stash$north_left_count <- 0
+      globals$stash$north_right_count <- 0
+      globals$stash$north_down_count <- 0
+      
+      globals$stash$east_up_count <- 0
+      globals$stash$east_left_count <- 0
+      globals$stash$east_down_count <- 0
+      
+      globals$stash$west_up_count <- 0
+      globals$stash$west_right_count <- 0
+      globals$stash$west_down_count <- 0
       
       tableInputs$resetHelmetElements()
       

@@ -5,7 +5,7 @@ GlobalModule <- function(input, output, session) {
   #####################
   if (Sys.info()['sysname'] == "Windows") {
     # on windows the driver is different than linux
-    stash$conn <- DBI::dbConnect(
+    stash$conn <- pool::dbPool(
       odbc::odbc(),
       Driver = "SQL Server",
       Server = Sys.getenv('DB_HOST'),
@@ -14,7 +14,7 @@ GlobalModule <- function(input, output, session) {
       PWD      = Sys.getenv('DB_PASSWORD')
     )
   } else {
-    stash$conn <- DBI::dbConnect(
+    stash$conn <- pool::dbPool(
       odbc::odbc(),
       Driver = "SQLServer",
       Server = Sys.getenv('DB_HOST'),

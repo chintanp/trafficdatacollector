@@ -18,7 +18,6 @@ mod_formModule_ui <- function(id) {
       collapsible = TRUE,
       elevation = 4,
       width = NULL,
-      solidHeader = TRUE,
       div(
         id = ns("form"),
         fluidRow(
@@ -58,7 +57,7 @@ mod_formModule_ui <- function(id) {
             )
             
           ),
-          column(4, textInput(ns("name"), "Name", "")),
+          column(4, textInput(ns("name"), "Name*", "")),
           column(4, textInput(ns("notes"), "Notes", "")),
           column(
             4,

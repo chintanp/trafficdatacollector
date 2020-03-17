@@ -119,7 +119,7 @@ mod_travelerSurveyModule_server <-
         db_conn,
         sqlQueryStrSurvey,
         survey_date = as.character(input$date_survey),
-        survey_time = as.character(input$time_input1),
+        survey_time = as.character(strftime(input$time_input1, "%T")),
         volunteer_name = input$name_survey,
         location = input$location_survey,
         trip_origin = input$trip_origin,

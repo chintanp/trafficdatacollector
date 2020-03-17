@@ -190,6 +190,12 @@ mod_tableModule_server <- function(input, output, session, globals) {
                    updateActionButton(session, inputId = str, label = 0)
                  }
                  
+                 globals$stash$female_no_helmet_count <- 0
+                 globals$stash$female_helmet_count <- 0
+                 globals$stash$male_no_helmet_count <- 0
+                 globals$stash$male_helmet_count <- 0
+                 
+                 
                  # Update the Helmet total
                  output$helmet_total <- renderText({
                    as.character(0)

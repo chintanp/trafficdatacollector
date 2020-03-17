@@ -18,7 +18,6 @@ mod_summaryModule_ui <- function(id) {
       collapsible = TRUE,
       elevation = 4,
       width = NULL,
-      solidHeader = TRUE,
       div(id = "summaryDiv",
           DT::dataTableOutput(ns("summaryTable")))
     )
@@ -26,20 +25,13 @@ mod_summaryModule_ui <- function(id) {
   fluidRow(column(
     12,
     bs4Dash::bs4Card(
-      title = "Summary Counts Graph",
+      title = "Summary Traveler Survey",
       closable = FALSE,
-      status = "purple",
+      status = "warning",
       collapsible = TRUE,
       elevation = 4,
       width = NULL,
-      solidHeader = TRUE,
-      fluidRow(column(3,
-                      fluidRow(
-                        
-                      )), column(9,
-                                 plotOutput(
-                                   outputId = ns("summary_graph")
-                                 )))
+      DT::dataTableOutput(ns("summarySurvey"))
       
     )
   )))
@@ -58,19 +50,18 @@ mod_summaryModule_server <-
       DT::datatable(
         counts,
         selection = "none",
-        filter = 'top',
+        # filter = 'top',
         options = list(
           pageLength = 10,
           autoWidth = TRUE,
           scrollX = TRUE,
           scrollCollapse = TRUE,
-          select = list(style = 'os', items = 'row'),
           columnDefs = list(list(
             className = 'dt-center', targets = "_all"
           )),
           dom = 'Bfrtip',
-          buttons = c('colvis'),
-          fixedColumns = list(leftColumns = 6),
+          # buttons = c('colvis'),
+          
           initComplete = DT::JS(
             "function(settings, json) {",
             "$(this.api().table().header()).css({'background-color': '#EBECEC', 'color': '#000'});",
@@ -78,10 +69,44 @@ mod_summaryModule_server <-
           )
         ),
         class = 'nowrap display',
-        extensions = c('Buttons', 'FixedColumns', 'Select')
+        extensions = c('Buttons')
       )
       
     })
+    
+    output$summarySurvey = DT::renderDataTable({
+      db_conn = globals$stash$conn
+      traveler_survey <- DBI::dbReadTable(db_conn, "TravelerSurvey")
+      DT::datatable(
+        traveler_survey,
+        selection = "none",
+        # filter = 'top',
+        options = list(
+          pageLength = 10,
+          # autoWidth = TRUE,
+          # scrollX = TRUE,
+          # scrollCollapse = TRUE,
+          columnDefs = list(list(
+            className = 'dt-center', targets = "_all"
+          )),
+          dom = 'Bfrtip',
+          # buttons = c('colvis'),
+          
+          initComplete = DT::JS(
+            "function(settings, json) {",
+            "$(this.api().table().header()).css({'background-color': '#EBECEC', 'color': '#000'});",
+            "}"
+          )
+        ),
+        extensions = c('Buttons')
+      )
+    })
+    
+    return (list(input, updateTable = function(dataRow) {
+      proxy1 <- DT::dataTableProxy('summaryTable')
+      print(dataRow)
+      DT::replaceData(proxy1, dataRow)
+    }))
     
   }
 
