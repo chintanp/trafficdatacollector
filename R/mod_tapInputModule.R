@@ -478,7 +478,7 @@ mod_tapInputModule_server <-
       dbout <- DBI::dbGetQuery(db_conn, sqlQuery)
       
       print(summaryInputs)
-      
+      # browser()
       summaryInputs$updateTable(data.frame("LocationID" = location_id,
                                            "Volunteer" = globals$stash$name,
                                            "Date" = as.POSIXct(paste(globals$stash$date, "00:00:00"), format="%Y-%m-%d %H:%M:%S"),
