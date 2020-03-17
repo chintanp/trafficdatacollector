@@ -243,7 +243,7 @@ mod_tapInputModule_ui <- function(id) {
           size = "sm",
           
           tags$i(class = "fa fa-angle-up fa-5x",
-                 style = "color: rgb(0,166,90); padding: 10px")
+                 style = "color: rgb(0,166,90); padding: 20px")
           
         ),
         shinyWidgets::actionBttn(
