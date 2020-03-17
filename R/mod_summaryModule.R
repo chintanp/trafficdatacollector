@@ -50,7 +50,7 @@ mod_summaryModule_server <-
       DT::datatable(
         counts,
         selection = "none",
-        # filter = 'top',
+        filter = 'top',
         options = list(
           pageLength = 10,
           autoWidth = TRUE,
@@ -80,12 +80,12 @@ mod_summaryModule_server <-
       DT::datatable(
         traveler_survey,
         selection = "none",
-        # filter = 'top',
+        filter = 'top',
         options = list(
           pageLength = 10,
-          # autoWidth = TRUE,
-          # scrollX = TRUE,
-          # scrollCollapse = TRUE,
+          autoWidth = TRUE,
+          scrollX = TRUE,
+          scrollCollapse = TRUE,
           columnDefs = list(list(
             className = 'dt-center', targets = "_all"
           )),
