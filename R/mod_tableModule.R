@@ -20,6 +20,9 @@ mod_tableModule_ui <- function(id) {
       elevation = 4,
       width = NULL,
       maximizable = TRUE,
+      dropdownIcon = "question",
+      dropdownMenu = bs4Dash::dropdownItemList(
+        bs4Dash::dropdownItem(name = "Click the buttons in the respective cells of the table to increment the corresponding counts. Currently, there is no way to reverse a mis-pressed button."), icon = "question"),
       fluidRow(
         bs4Dash::bs4Table(
           cardWrap = TRUE,

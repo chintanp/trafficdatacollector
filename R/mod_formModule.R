@@ -140,6 +140,7 @@ mod_formModule_server <- function(input, output, session, globals) {
     globals$stash$notes = input$notes
     globals$stash$weather = input$weather
     globals$stash$temperature = input$actTemp
+    globals$stash$notes = input$notes
   })
   
   # return this input so the elements can be used/modified in other modules
@@ -158,7 +159,17 @@ mod_formModule_server <- function(input, output, session, globals) {
         value <- initialInputs[[id]]
         # For empty checkboxGroupInputs
         if (is.null(value)) value <- ""
+        
         session$sendInputMessage(id, list(value = value))
+        
+        globals$stash$name <- ''
+        globals$stash$location <- ''
+        globals$stash$time <- ''
+        globals$stash$date <- ''
+        globals$stash$notes <- ''
+        globals$stash$weather <- ''
+        globals$stash$temperature <- ''
+        globals$stash$notes <- ''
       }
     }
   ))

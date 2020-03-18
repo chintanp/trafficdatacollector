@@ -20,20 +20,9 @@ mod_tapInputModule_ui <- function(id) {
       elevation = 4,
       width = NULL,
       maximizable = TRUE,
-      # HTML('<div style="position:relative; height: 600px">
-      #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
-      #   style="position:absolute; top:10px; left: 20px; opacity:0.4;filter:alpha(opacity=40);"/>
-      #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
-      #   style="position:absolute; top:350px; left: 20px; opacity:0.4;filter:alpha(opacity=40); "/>
-      #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
-      #   style="position:absolute; top:10px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/>
-      #           <img src="https://lh3.googleusercontent.com/qdaS4UKvUbJ8gW7rxzpVgntTzWdklBfnGwu0UwFoRskx62UuRbKFfEXaJo_OoRgRv7NAv5TnnjVR98vQGeFS9XSzuxlGsjQMGA8_BDg9wcRMYIinQ4YWD4KfyGiBdR-lzKQ6_K9I0A=w2400" height="200px"
-      #   style="position:absolute; top:350px; left: 350px; opacity:0.4;filter:alpha(opacity=40);"/>
-      #      </div>')
-      # icon("square", "fa-10x"),
-      # icon("caret-left", "fa-10x"),
-      # icon("caret-down", "fa-10x"),
-      # icon("caret-left", "fa-10x"),
+      dropdownIcon = "question",
+      dropdownMenu = bs4Dash::dropdownItemList(
+        bs4Dash::dropdownItem(name = p("Click the arrows in respective direction to increment the count by 1. The top row represents the south bound traffic and bottom row of arrows for north bound traffic etc.", style = "color: rgb(0,0,0);")), icon = "question"),
       
       # top row
       fluidRow(
@@ -436,10 +425,10 @@ mod_tapInputModule_server <-
       sqlQueryStr <-
         "insert into Counts (LocationID, Volunteer, Date, Weather, TimePeriod, NorthBoundLeft, NorthBoundRight, NorthBoundThrough,
       SouthBoundLeft, SouthBoundRight, SouthBoundThrough, EastBoundLeft, EastBoundRight, EastBoundThrough,
-      WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale) values
+      WestBoundLeft, WestBoundRight, WestBoundThrough, HelmetMale, HelmetFemale, NoHelmetMale, NoHelmetFemale, Notes) values
       (?location_id, ?name, ?date, ?weather, ?time_period, ?north_bound_left, ?north_bound_right, ?north_bound_through, ?south_bound_left,
       ?south_bound_right, ?south_bound_through, ?east_bound_left, ?east_bound_right, ?east_bound_through, ?west_bound_left, ?west_bound_right,
-      ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female)"
+      ?west_bound_through, ?helmet_male, ?helmet_female, ?no_helmet_male, ?no_helmet_female, ?notes)"
       
       print(typeof(globals$stash$date))
       
@@ -470,7 +459,8 @@ mod_tapInputModule_server <-
         helmet_male = globals$stash$male_helmet_count,
         helmet_female = globals$stash$female_helmet_count,
         no_helmet_male = globals$stash$male_no_helmet_count,
-        no_helmet_female = globals$stash$female_no_helmet_count
+        no_helmet_female = globals$stash$female_no_helmet_count, 
+        notes = globals$stash$notes
       )
       
       print(sqlQuery)

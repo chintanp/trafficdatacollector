@@ -52,6 +52,7 @@ GlobalModule <- function(input, output, session) {
   stash$notes <- ''
   stash$weather <- ''
   stash$temperature <- ''
+  stash$notes <- ''
   
   
   # stash$conn <-  RODBC::odbcDriverConnect(glue::glue("Driver=ODBC Driver 17 for SQL Server;Server={Sys.getenv('DB_HOST')}; Database={Sys.getenv('DB_NAME')};Uid={Sys.getenv('DB_USERNAME')}; Pwd={Sys.getenv('DB_PASSWORD')}"))
